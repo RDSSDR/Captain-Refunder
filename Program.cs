@@ -46,6 +46,15 @@ public class Program
         if (canRefund)
         {
             refundAmount = _entry.GetRefundAmount(lastLevel);
+            self.cost.gameObject.SetActive(value: true);
+            self.costIcon.gameObject.SetActive(value: true);
+            self.add.gameObject.SetActive(value: true);
+        }
+        else
+        {
+            self.cost.gameObject.SetActive(value: false);
+            self.costIcon.gameObject.SetActive(value: false);
+            self.add.gameObject.SetActive(value: false);
         }
         /*(int costValue, bool canBuy) costToUpgrade = entry.GetCostToUpgrade();
         int item = costToUpgrade.costValue;
@@ -147,7 +156,12 @@ public class Program
         SaveSystem.Save();
         Player.localPlayer.ResetStats();
         refreshUiInfo.Invoke(metaUiInstance, null);
-        self.RefreshUI();
+        //self.RefreshUI();
+        MetaProgressionRowUI[] metaProgressionRowUIs = GameObject.FindObjectsOfType<MetaProgressionRowUI>();
+        foreach (MetaProgressionRowUI metaProgressionRowUI in metaProgressionRowUIs)
+        {
+            metaProgressionRowUI.RefreshUI();
+        }
     }
 
     private static void PlayerCharacter_Awake(On.PlayerCharacter.orig_Awake orig, PlayerCharacter self)

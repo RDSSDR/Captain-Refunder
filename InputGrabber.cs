@@ -24,7 +24,7 @@ namespace CR
         {
             if (!GM_Hub.isInHub || !Program.MetaUiOpen())
             {
-                Debug.Log("InputGrabber: Not in hub or MetaUi is not open");
+                //Debug.Log("InputGrabber: Not in hub or MetaUi is not open");
                 return;
             }
             sprintPressed = Input.GetKeyDown(KeyCode.LeftShift);
